@@ -18,6 +18,8 @@ RUN apt-get update \
     cron \
     supervisor \
     libmagickwand-dev \
+    imagemagick \
+    php5-imagick \
   && apt-get clean
 
 RUN docker-php-ext-configure \
