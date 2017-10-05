@@ -18,6 +18,7 @@ RUN apt-get update \
     cron \
     supervisor \
     libmagickwand-dev \
+    bzip2 \
   && apt-get clean
 
 RUN docker-php-ext-configure \
