@@ -15,6 +15,7 @@ RUN apt-get update \
     psmisc \
     yui-compressor \
     jpegoptim \
+    optipng \
     cron \
     supervisor \
     libmagickwand-dev \
