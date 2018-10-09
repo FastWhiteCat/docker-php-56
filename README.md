@@ -5,6 +5,7 @@ Included:
  - Composer
  - Node.js
  - MageRun
+ - Dockerize
 
 ## Description
 
