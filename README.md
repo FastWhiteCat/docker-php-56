@@ -5,7 +5,8 @@ Included:
  - Composer
  - Node.js
  - MageRun
- - Dockerize
+ - [Dockerize](https://github.com/jwilder/dockerize)
+
 
 ## Description
 
