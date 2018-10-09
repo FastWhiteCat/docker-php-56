@@ -53,4 +53,7 @@ RUN curl -sL  https://deb.nodesource.com/setup_7.x | bash - && \
 RUN cd /usr/local/bin && \
     wget https://files.magerun.net/n98-magerun.phar && \
     chmod +x ./n98-magerun.phar
-
+    
+# Install Dockerize
+RUN curl -Ls https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+           | tar -xzv -C /usr/local/bin
