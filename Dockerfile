@@ -2,7 +2,10 @@ FROM php:5.6.27-fpm
 
 ENV DOCKERIZE_VERSION v0.6.1
 
-RUN apt-get update \
+
+RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list \
+  && sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list \
+  && apt-get -o Acquire::Check-Valid-Until=false update \
   && apt-get install -y \
     libfreetype6-dev \
     libicu-dev \
@@ -22,6 +25,9 @@ RUN apt-get update \
     supervisor \
     libmagickwand-dev \
     bzip2 \
+    gifsicle \
+    libjpeg-progs \
+    optipng \
   && apt-get clean
 
 RUN docker-php-ext-configure \
@@ -48,8 +54,10 @@ RUN curl -sS https://getcomposer.org/installer | \
       --version=1.1.2
 
 # Install Node.js
-RUN curl -sL  https://deb.nodesource.com/setup_7.x | bash - && \
-  apt-get install -y nodejs
+RUN curl -sL  https://deb.nodesource.com/setup_7.x \
+    | sed 's|apt-get update|apt-get -o Acquire::Check-Valid-Until=false update|g' \
+    | bash - \
+    && apt-get install -y nodejs
 
 # Install MageRun
 RUN cd /usr/local/bin && \
